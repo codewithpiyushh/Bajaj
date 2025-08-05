@@ -12,6 +12,7 @@ from app.models.response_models import DocumentProcessResponse, DocumentProcessA
 from app.core.document_processor import DocumentProcessor
 from app.core.intelligent_processor import IntelligentProcessor
 from app.utils.exceptions import DocumentProcessingError
+from app.utils.auth import require_auth
 
 # Setup basic logging
 logging.basicConfig(
@@ -83,6 +84,9 @@ async def process_document_with_qa(
     3. Stores chunks in vector database
     4. Answers questions using retrieval-augmented generation (RAG)
     """
+    # Require authentication
+    require_auth(authorization)
+    
     request_id = f"req_{int(datetime.now().timestamp() * 1000)}"
     
     logger.info(f"[{request_id}] Processing document: {request.documents}")
@@ -124,6 +128,8 @@ async def get_simple_answers(
     request: DocumentProcessRequest,
     authorization: Optional[str] = Header(None)
 ) -> SimpleAnswersResponse:
+    # Require authentication
+    require_auth(authorization)
     """
     Simplified endpoint that returns only answers in the required format
     
@@ -316,6 +322,8 @@ async def ask_question(
     request: QuestionRequest,
     authorization: Optional[str] = Header(None)
 ) -> QuestionResponse:
+    # Require authentication
+    require_auth(authorization)
     """
     Ask a single question about the processed document
     

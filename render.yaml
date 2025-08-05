@@ -32,3 +32,5 @@ services:
         value: "300"
       - key: MAX_RETRIES
         value: "3"
+      - key: GEMINI_API_KEY
+        sync: false
