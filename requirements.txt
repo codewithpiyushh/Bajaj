@@ -1,0 +1,29 @@
+# Core FastAPI and web framework
+fastapi
+uvicorn[standard]
+pydantic
+
+# HTTP and file handling
+aiohttp
+python-multipart
+python-dotenv
+
+# Document processing - stable, compatible versions (NO PyMuPDF)
+pypdf
+pdfplumber
+python-docx
+
+PyPDF2
+
+# AI and ML libraries
+sentence-transformers
+faiss-cpu
+numpy
+google-generativeai
+tiktoken
+chromadb
+
+# System packages for compatibility
+Pillow
+setuptools
+wheel
